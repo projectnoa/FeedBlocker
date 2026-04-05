@@ -1,0 +1,4 @@
+/* content/facebook.css */
+html.no-feed div[role="main"] {
+  display: none !important;
+}

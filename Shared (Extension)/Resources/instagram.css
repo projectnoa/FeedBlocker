@@ -1,0 +1,9 @@
+/* content/instagram.css */
+html.no-feed main[role="main"] {
+  display: none !important;
+}
+
+html.no-feed footer[role="contentinfo"] {
+  display: none !important;
+}
+

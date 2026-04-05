@@ -1,0 +1,10 @@
+{
+    "extension_name": {
+        "message": "FeedBlocker",
+        "description": "The display name for the extension."
+    },
+    "extension_description": {
+        "message": "An extension to block facebook, instagram, and youtube feeds.",
+        "description": "Description of what the extension does."
+    }
+}
