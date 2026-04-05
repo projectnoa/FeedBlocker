@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -10,29 +11,39 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FeedBlocker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RDB-ib-igF">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yOw-Tp-xOL">
+                                <rect key="frame" x="0.0" y="145" width="414" height="683"/>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FeedBlocker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eke-87-CVW">
+                                <rect key="frame" x="116" y="96" width="182" height="41"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <constraints>
+                            <constraint firstItem="yOw-Tp-xOL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1Ue-mu-Kmf"/>
+                            <constraint firstItem="yOw-Tp-xOL" firstAttribute="top" secondItem="Eke-87-CVW" secondAttribute="bottom" constant="8" symbolic="YES" id="7th-jm-FOd"/>
+                            <constraint firstItem="Eke-87-CVW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="QP7-pQ-xVG"/>
+                            <constraint firstItem="yOw-Tp-xOL" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ei0-Hx-jeb"/>
+                            <constraint firstItem="Eke-87-CVW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="m7f-gg-atf"/>
+                            <constraint firstItem="yOw-Tp-xOL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="peV-Ky-rEa"/>
+                            <constraint firstItem="yOw-Tp-xOL" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="q2O-Q7-suH"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="webView" destination="RDB-ib-igF" id="avx-RC-qRB"/>
+                        <outlet property="stackView" destination="yOw-Tp-xOL" id="dq3-TO-lVL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
 </document>

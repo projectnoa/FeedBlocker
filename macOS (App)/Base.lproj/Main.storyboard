@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="24765"/>
-        <plugIn identifier="com.apple.WebKit2IBPlugin" version="24765"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -103,23 +102,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="425" height="325"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <wkWebView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eOr-cG-IQY">
-                                <rect key="frame" x="0.0" y="0.0" width="425" height="325"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jBx-xC-h0x">
+                                <rect key="frame" x="139" y="274" width="148" height="31"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="FeedBlocker" id="PML-r7-2Gy">
+                                    <font key="font" textStyle="largeTitle" name=".SFNS-Regular"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nmy-qG-UI2">
+                                <rect key="frame" x="20" y="20" width="385" height="246"/>
+                            </stackView>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="jBx-xC-h0x" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" symbolic="YES" id="1ph-tU-YK8"/>
+                            <constraint firstItem="jBx-xC-h0x" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="8rh-5e-v6W"/>
+                            <constraint firstItem="Nmy-qG-UI2" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="Gow-1W-7T0"/>
+                            <constraint firstAttribute="trailing" secondItem="Nmy-qG-UI2" secondAttribute="trailing" constant="20" symbolic="YES" id="McQ-sm-PnE"/>
+                            <constraint firstItem="Nmy-qG-UI2" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="XGC-TO-iOa"/>
+                            <constraint firstItem="Nmy-qG-UI2" firstAttribute="top" secondItem="jBx-xC-h0x" secondAttribute="bottom" constant="8" symbolic="YES" id="bl6-6C-dwG"/>
+                            <constraint firstAttribute="bottom" secondItem="Nmy-qG-UI2" secondAttribute="bottom" constant="20" symbolic="YES" id="ouU-GS-dUt"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="webView" destination="eOr-cG-IQY" id="GFe-mU-dBY"/>
+                        <outlet property="stackView" destination="Nmy-qG-UI2" id="Hlw-WG-D7v"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="74.5" y="654.5"/>
         </scene>
     </scenes>
 </document>

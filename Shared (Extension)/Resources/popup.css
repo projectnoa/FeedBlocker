@@ -3,13 +3,31 @@
 }
 
 body {
-    width: 100px;
-    padding: 10px;
+    min-width: 200px;
+    padding: 16px;
 
     font-family: system-ui;
     text-align: center;
 }
 
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+label {
+    font-size: 15px;
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
 @media (prefers-color-scheme: dark) {
     /* Dark Mode styles go here. */
 }
+
+    

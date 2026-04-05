@@ -54,6 +54,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		203CF0272F83147F003A32E5 /* FeedBlocker (iOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "FeedBlocker (iOS).entitlements"; sourceTree = "<group>"; };
+		203CF0282F8314C8003A32E5 /* FeedBlocker (macOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "FeedBlocker (macOS).entitlements"; sourceTree = "<group>"; };
+		203CF0292F831613003A32E5 /* FeedBlocker Extension (iOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "FeedBlocker Extension (iOS).entitlements"; sourceTree = "<group>"; };
+		203CF02A2F831620003A32E5 /* FeedBlocker Extension (macOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "FeedBlocker Extension (macOS).entitlements"; sourceTree = "<group>"; };
+		20B967362F82FD79008A55CF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		20F857592F1C8867006AC04F /* FeedBlocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedBlocker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20F8576B2F1C8867006AC04F /* FeedBlocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedBlocker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20F857762F1C8867006AC04F /* FeedBlocker Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "FeedBlocker Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +74,7 @@
 				Resources/Icon.png,
 				Resources/Script.js,
 				Resources/Style.css,
+				Sites.swift,
 				ViewController.swift,
 			);
 			target = 20F857582F1C8867006AC04F /* FeedBlocker (iOS) */;
@@ -95,6 +101,7 @@
 				Resources/Icon.png,
 				Resources/Script.js,
 				Resources/Style.css,
+				Sites.swift,
 				ViewController.swift,
 			);
 			target = 20F8576A2F1C8867006AC04F /* FeedBlocker (macOS) */;
@@ -239,6 +246,10 @@
 		20F8573C2F1C8865006AC04F = {
 			isa = PBXGroup;
 			children = (
+				203CF02A2F831620003A32E5 /* FeedBlocker Extension (macOS).entitlements */,
+				203CF0292F831613003A32E5 /* FeedBlocker Extension (iOS).entitlements */,
+				203CF0282F8314C8003A32E5 /* FeedBlocker (macOS).entitlements */,
+				203CF0272F83147F003A32E5 /* FeedBlocker (iOS).entitlements */,
 				20F857412F1C8865006AC04F /* Shared (App) */,
 				20F8574A2F1C8867006AC04F /* Shared (Extension) */,
 				20F8575B2F1C8867006AC04F /* iOS (App) */,
@@ -246,6 +257,7 @@
 				20F8577A2F1C8867006AC04F /* iOS (Extension) */,
 				20F857842F1C8867006AC04F /* macOS (Extension) */,
 				20F8575A2F1C8867006AC04F /* Products */,
+				20B967362F82FD79008A55CF /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -480,6 +492,7 @@
 		20F857A62F1C8867006AC04F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "FeedBlocker Extension (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TL76QL278K;
@@ -514,6 +527,7 @@
 		20F857A72F1C8867006AC04F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "FeedBlocker Extension (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TL76QL278K;
@@ -551,6 +565,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "FeedBlocker (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TL76QL278K;
@@ -593,6 +608,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "FeedBlocker (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TL76QL278K;
@@ -634,6 +650,7 @@
 		20F857B02F1C8867006AC04F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "FeedBlocker Extension (macOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
@@ -658,6 +675,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.buildthestack.FeedBlocker.Extension;
 				PRODUCT_NAME = "FeedBlocker Extension";
+				REGISTER_APP_GROUPS = YES;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -671,6 +689,7 @@
 		20F857B12F1C8867006AC04F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "FeedBlocker Extension (macOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
@@ -695,6 +714,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.buildthestack.FeedBlocker.Extension;
 				PRODUCT_NAME = "FeedBlocker Extension";
+				REGISTER_APP_GROUPS = YES;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -710,6 +730,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "FeedBlocker (macOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
@@ -752,6 +773,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "FeedBlocker (macOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
