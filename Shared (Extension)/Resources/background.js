@@ -1,5 +1,7 @@
 async function syncFromNative() {
     try {
+        console.log("Syncing...", e);
+        
         const prefs = await browser.runtime.sendNativeMessage("com.buildthestack.feedblocker", { name: "getPreferences" });
         await browser.storage.local.set(prefs);
         return prefs;
@@ -12,7 +14,7 @@ async function setPreference(site, enabled) {
     // Write to storage immediately so UI feels responsive
     await browser.storage.local.set({ [`enabled_${site}`]: enabled });
     // Persist to native App Group
-    await browser.runtime.sendNativeMessage("com.yourapp", {
+    await browser.runtime.sendNativeMessage("com.buildthestack.feedblocker", {
         name: "setPreference",
         site,
         enabled
