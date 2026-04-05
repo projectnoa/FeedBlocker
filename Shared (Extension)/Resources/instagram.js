@@ -1,81 +1,89 @@
 // content/instagram.js
 (() => {
-  const HOME = "/";
+    const HOME = "/";
 
-  const isHome = () => location.pathname === "/";
-  const isReels = () =>
-    location.pathname === "/reels/" ||
-    location.pathname.startsWith("/reels/") ||
-    location.pathname.startsWith("/reel/");
+    const isHome = () => location.pathname === "/";
     
-  const isExplore = () =>
-    location.pathname === "/explore/" ||
-    location.pathname.startsWith("/explore/");
+    const isReels = () =>
+        location.pathname === "/reel" ||
+        location.pathname === "/reels" ||
+        location.pathname.startsWith("/reel/") ||
+        location.pathname.startsWith("/reels/");
 
-  const apply = () => {
-    // Block Reels routes
-    if (isReels() || isExplore()) {
-      // replace avoids polluting history with blocked routes
-      location.replace(HOME);
-      return;
-    }
+    const isExplore = () =>
+        location.pathname === "/explore" ||
+        location.pathname.startsWith("/explore/");
 
-    // Only hide the feed on the homepage
-    if (isHome()) {
-      document.documentElement.classList.add("no-feed");
-    } else {
-      document.documentElement.classList.remove("no-feed");
-    }
-  };
+    const apply = () => {
+        // Block routes
+        if (isReels() || isExplore()) {
+            // replace avoids polluting history with blocked routes
+            location.replace(HOME);
+          
+            return;
+        }
 
-  // Run once ASAP
-  apply();
-
-  // Handle SPA navigation (Instagram uses pushState/replaceState)
-  const hookHistory = () => {
-    const { pushState, replaceState } = history;
-
-    history.pushState = function (...args) {
-      const ret = pushState.apply(this, args);
-      queueMicrotask(apply);
-      return ret;
+        // Hide the feed
+        if (isHome()) {
+            document.documentElement.classList.add("no-feed");
+        } else {
+            document.documentElement.classList.remove("no-feed");
+        }
     };
 
-    history.replaceState = function (...args) {
-      const ret = replaceState.apply(this, args);
-      queueMicrotask(apply);
-      return ret;
+    // Run once ASAP
+    apply();
+
+    // Handle SPA navigation
+    const hookHistory = () => {
+        const { pushState, replaceState } = history;
+
+        history.pushState = function (...args) {
+            const ret = pushState.apply(this, args);
+            
+            queueMicrotask(apply);
+          
+            return ret;
+        };
+
+        history.replaceState = function (...args) {
+            const ret = replaceState.apply(this, args);
+          
+            queueMicrotask(apply);
+            
+            return ret;
+        };
+
+        window.addEventListener("popstate", apply, { passive: true });
     };
 
-    window.addEventListener("popstate", apply, { passive: true });
-  };
+    hookHistory();
 
-  hookHistory();
+    // Intercept clicks on Reels links (before handler)
+    document.addEventListener("click", (e) => {
+        const a = e.target.closest("a[href]");
+      
+        if (!a) return;
 
-  // Intercept clicks on Reels links (before IG’s handler)
-  document.addEventListener(
-    "click",
-    (e) => {
-      const a = e.target.closest("a[href]");
-      if (!a) return;
+        const href = a.getAttribute("href") || "";
+      
+        if (href.startsWith("/reels") || href.startsWith("/reel/")) {
+            e.preventDefault();
+            e.stopPropagation();
+        
+            location.assign(HOME);
+        }
+    }, true);
 
-      const href = a.getAttribute("href") || "";
-      if (href.startsWith("/reels") || href.startsWith("/reel/")) {
-        e.preventDefault();
-        e.stopPropagation();
-        location.assign(HOME);
-      }
-    },
-    true
-  );
-
-  // Lightweight “safety net” for occasional edge cases
-  // (some frameworks update location without history events)
-  let last = location.href;
-  setInterval(() => {
-    if (location.href !== last) {
-      last = location.href;
-      apply();
-    }
-  }, 500);
+    // Lightweight “safety net” for occasional edge cases
+    // (some frameworks update location without history events)
+    let last = location.href;
+    
+    setInterval(() => {
+        if (location.href !== last) {
+            last = location.href;
+      
+            apply();
+        }
+    }, 500);
 })();

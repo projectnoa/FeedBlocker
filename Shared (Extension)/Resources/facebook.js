@@ -5,13 +5,13 @@
     const isHome = () => location.pathname === "/";
     
     const isReels = () =>
-        location.pathname === "/reel/" ||
-        location.pathname === "/reels/" ||
-        location.pathname.startsWith("/reels/") ||
-        location.pathname.startsWith("/reel/");
+        location.pathname === "/reel" ||
+        location.pathname === "/reels" ||
+        location.pathname.startsWith("/reel/") ||
+        location.pathname.startsWith("/reels/");
     
     const isWatch = () =>
-        location.pathname === "/watch/" ||
+        location.pathname === "/watch" ||
         location.pathname.startsWith("/watch/");
 
     const apply = () => {
