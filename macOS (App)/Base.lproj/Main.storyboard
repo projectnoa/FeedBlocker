@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="24765" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="25098" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="24765"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="25098"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -80,7 +80,7 @@
                     <window key="window" title="FeedBlocker" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowCollectionBehavior key="collectionBehavior" fullScreenNone="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="425" height="325"/>
+                        <rect key="contentRect" x="191" y="240" width="430" height="325"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
@@ -92,45 +92,83 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="250"/>
+            <point key="canvasLocation" x="72" y="249.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="FeedBlocker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="425" height="325"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="302"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jBx-xC-h0x">
-                                <rect key="frame" x="139" y="274" width="148" height="31"/>
+                                <rect key="frame" x="18" y="116" width="414" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="EYd-4E-Auo"/>
+                                </constraints>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="FeedBlocker" id="PML-r7-2Gy">
                                     <font key="font" textStyle="largeTitle" name=".SFNS-Regular"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nmy-qG-UI2">
-                                <rect key="frame" x="20" y="20" width="385" height="246"/>
-                            </stackView>
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GbF-e2-Gsn">
+                                <rect key="frame" x="18" y="68" width="414" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="MP9-dK-qgW"/>
+                                    <constraint firstAttribute="width" constant="410" id="xWU-ss-uzw"/>
+                                </constraints>
+                                <textFieldCell key="cell" alignment="center" title="Block the insidious feeds and free yourself from toxic algorithms without losing access to your socials." id="Kmp-Lj-rSp">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8AC-qa-EFs">
+                                <rect key="frame" x="18" y="20" width="414" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Hko-8Y-iKY"/>
+                                </constraints>
+                                <textFieldCell key="cell" alignment="center" title="This extension is free and open for everyone. Find out more at github.com/projectnoa" id="dua-EB-r4g">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gTX-cJ-8yK">
+                                <rect key="frame" x="161" y="154" width="128" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="128" id="LhD-gn-NwD"/>
+                                    <constraint firstAttribute="height" constant="128" id="Yv7-3U-z0L"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="LargeIcon" id="mM3-TK-M8Y"/>
+                            </imageView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="jBx-xC-h0x" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" symbolic="YES" id="1ph-tU-YK8"/>
-                            <constraint firstItem="jBx-xC-h0x" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="8rh-5e-v6W"/>
-                            <constraint firstItem="Nmy-qG-UI2" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="Gow-1W-7T0"/>
-                            <constraint firstAttribute="trailing" secondItem="Nmy-qG-UI2" secondAttribute="trailing" constant="20" symbolic="YES" id="McQ-sm-PnE"/>
-                            <constraint firstItem="Nmy-qG-UI2" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="XGC-TO-iOa"/>
-                            <constraint firstItem="Nmy-qG-UI2" firstAttribute="top" secondItem="jBx-xC-h0x" secondAttribute="bottom" constant="8" symbolic="YES" id="bl6-6C-dwG"/>
-                            <constraint firstAttribute="bottom" secondItem="Nmy-qG-UI2" secondAttribute="bottom" constant="20" symbolic="YES" id="ouU-GS-dUt"/>
+                            <constraint firstItem="8AC-qa-EFs" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="5Kp-qW-ze1"/>
+                            <constraint firstItem="GbF-e2-Gsn" firstAttribute="top" secondItem="jBx-xC-h0x" secondAttribute="bottom" constant="8" symbolic="YES" id="8in-bF-QzP"/>
+                            <constraint firstItem="jBx-xC-h0x" firstAttribute="top" secondItem="gTX-cJ-8yK" secondAttribute="bottom" constant="8" symbolic="YES" id="B7E-YZ-Lo1"/>
+                            <constraint firstItem="jBx-xC-h0x" firstAttribute="width" secondItem="GbF-e2-Gsn" secondAttribute="width" id="EFX-Bq-mP3"/>
+                            <constraint firstItem="gTX-cJ-8yK" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="Kda-ib-m98"/>
+                            <constraint firstAttribute="trailing" secondItem="jBx-xC-h0x" secondAttribute="trailing" constant="20" symbolic="YES" id="OPt-N6-pEV"/>
+                            <constraint firstItem="GbF-e2-Gsn" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="WgT-ON-hxH"/>
+                            <constraint firstItem="gTX-cJ-8yK" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" symbolic="YES" id="giQ-3V-d9x"/>
+                            <constraint firstAttribute="trailing" secondItem="8AC-qa-EFs" secondAttribute="trailing" constant="20" symbolic="YES" id="h9I-fE-Ebn"/>
+                            <constraint firstAttribute="trailing" secondItem="GbF-e2-Gsn" secondAttribute="trailing" constant="20" symbolic="YES" id="hRx-Eb-i6E"/>
+                            <constraint firstItem="8AC-qa-EFs" firstAttribute="width" secondItem="GbF-e2-Gsn" secondAttribute="width" id="lnb-tP-wkc"/>
+                            <constraint firstItem="jBx-xC-h0x" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="o7F-M5-KLW"/>
+                            <constraint firstItem="8AC-qa-EFs" firstAttribute="top" secondItem="GbF-e2-Gsn" secondAttribute="bottom" constant="8" symbolic="YES" id="tpX-aQ-jQL"/>
+                            <constraint firstAttribute="bottom" secondItem="8AC-qa-EFs" secondAttribute="bottom" constant="20" symbolic="YES" id="yON-pZ-1il"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="stackView" destination="Nmy-qG-UI2" id="Hlw-WG-D7v"/>
-                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="74.5" y="654.5"/>
+            <point key="canvasLocation" x="37" y="786.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="LargeIcon" width="128" height="128"/>
+    </resources>
 </document>

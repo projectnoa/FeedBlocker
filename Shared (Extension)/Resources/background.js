@@ -16,11 +16,15 @@ async function setPreference(site, enabled) {
     // Write to storage immediately so UI feels responsive
     await browser.storage.local.set({ [`enabled_${site}`]: enabled });
     // Persist to native App Group
-    await browser.runtime.sendNativeMessage("com.buildthestack.feedblocker", {
-        name: "setPreference",
-        site,
-        enabled
-    });
+    try {
+        await browser.runtime.sendNativeMessage("com.buildthestack.feedblocker", {
+            name: "setPreference",
+            site,
+            enabled
+        });
+    } catch (e) {
+        console.warn("Failed to persist to native:", e);
+    }
 }
 
 // Sync whenever a tab finishes loading
@@ -30,6 +34,12 @@ browser.tabs.onUpdated.addListener((tabId, changeInfo) => {
 
 // Sync when the user switches tabs
 browser.tabs.onActivated.addListener(syncFromNative);
+
+// Sync periodically to catch changes from the native app
+setInterval(syncFromNative, 2000); // Poll every 2 seconds
+
+// Initial sync when extension loads
+syncFromNative();
 
 // Handle messages from popup and content scripts
 browser.runtime.onMessage.addListener((message) => {
