@@ -1,12 +1,14 @@
 async function syncFromNative() {
     try {
-        console.log("Syncing...", e);
+        console.log("Syncing...");
         
         const prefs = await browser.runtime.sendNativeMessage("com.buildthestack.feedblocker", { name: "getPreferences" });
         await browser.storage.local.set(prefs);
         return prefs;
     } catch (e) {
         console.warn("Native sync failed", e);
+        // Fallback to reading from storage if native sync fails
+        return browser.storage.local.get(null);
     }
 }
 

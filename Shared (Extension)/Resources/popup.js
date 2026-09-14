@@ -1,12 +1,21 @@
 console.log("Feed blocker starts!", browser);
 
-// Sync from native first, then reflect current state
-browser.runtime.sendMessage({ name: "getPreferences" }).then((prefs) => {
+// Initialize popup state
+async function initializePopup() {
+    // First, sync from native to ensure we have the latest preferences
+    const prefs = await browser.runtime.sendMessage({ name: "getPreferences" });
+    
+    // Then set all toggles based on the synced preferences
     for (const site of ["facebook", "instagram", "youtube"]) {
         const toggle = document.getElementById(site);
-        if (toggle) toggle.checked = prefs?.[`enabled_${site}`] ?? true;
+        if (toggle) {
+            toggle.checked = prefs?.[`enabled_${site}`] ?? true;
+        }
     }
-});
+}
+
+// Initialize when popup opens
+initializePopup();
 
 // Keep toggles updated if storage changes while popup is open
 browser.storage.onChanged.addListener((changes) => {
@@ -20,7 +29,7 @@ browser.storage.onChanged.addListener((changes) => {
 
 // Write changes back through the background script
 for (const site of ["facebook", "instagram", "youtube"]) {
-    let toggle = document.getElementById(site);
+    const toggle = document.getElementById(site);
     
     toggle?.addEventListener("change", (e) => {
         browser.runtime.sendMessage({
@@ -30,33 +39,3 @@ for (const site of ["facebook", "instagram", "youtube"]) {
         });
     });
 }
-
-// Reflect the current stored state when the popup opens
-browser.storage.local.get({ enabled_facebook: true }).then(({ enabled_facebook }) => {
-    document.getElementById("facebook").checked = enabled_facebook;
-});
-//
-//// Persist the new state whenever the user flips the switch
-//toggleFacebook.addEventListener("change", () => {
-//    browser.storage.local.set({ enabled_facebook: toggleFacebook.checked });
-//});
-
-// Reflect the current stored state when the popup opens
-browser.storage.local.get({ enabled_instagram: true }).then(({ enabled_instagram }) => {
-    document.getElementById("instagram").checked = enabled_instagram;
-});
-//
-//// Persist the new state whenever the user flips the switch
-//toggleInstagram.addEventListener("change", () => {
-//    browser.storage.local.set({ enabled_instagram: toggleInstagram.checked });
-//});
-
-// Reflect the current stored state when the popup opens
-browser.storage.local.get({ enabled_youtube: true }).then(({ enabled_youtube }) => {
-    document.getElementById("youtube").checked = enabled_youtube;
-});
-//
-//// Persist the new state whenever the user flips the switch
-//toggleYouTube.addEventListener("change", () => {
-//    browser.storage.local.set({ enabled_youtube: toggleYouTube.checked });
-//});

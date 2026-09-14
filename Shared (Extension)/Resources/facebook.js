@@ -13,6 +13,7 @@
     // React to changes while the page is open
     browser.storage.onChanged.addListener((changes) => {
         if (!("enabled_facebook" in changes)) return;
+        
         if (changes.enabled_facebook.newValue) init();
         else cleanup();
     });
