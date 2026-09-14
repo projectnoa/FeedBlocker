@@ -1,5 +1,9 @@
 /* content/youtube.css */
 
+/* ===================================
+   DESKTOP YOUTUBE (www.youtube.com)
+   =================================== */
+
 /* Hide the home feed grid */
 html.no-feed ytd-browse[page-subtype="home"] ytd-rich-grid-renderer,
 html.no-feed ytd-browse[page-subtype="home"] #contents {
@@ -12,7 +16,7 @@ html.no-feed ytd-watch-flexy #secondary {
 }
 
 /* -----------------------------
-   Hide YouTube Shorts in Search
+   Hide YouTube Shorts in Search (Desktop)
    ----------------------------- */
 
 /* 1) Hide individual Shorts results (most reliable: href contains /shorts/) */
@@ -42,4 +46,92 @@ html.no-feed ytd-search ytd-reel-item-renderer {
 /* 4) Clean up spacing where hidden items were (sometimes needed) */
 html.no-feed ytd-search ytd-item-section-renderer #contents {
   gap: 0 !important;
+}
+
+/* ===================================
+   MOBILE YOUTUBE (m.youtube.com)
+   =================================== */
+
+/* Hide mobile home feed */
+html.no-feed ytm-browse[page-subtype="home"] ytm-rich-grid-renderer,
+html.no-feed ytm-browse[page-subtype="home"] #contents,
+html.no-feed ytm-browse ytm-section-list-renderer[main-app-browsing_] #contents {
+  display: none !important;
+}
+
+/* Hide mobile home feed items */
+html.no-feed ytm-rich-item-renderer,
+html.no-feed ytm-video-with-context-renderer {
+  display: none !important;
+}
+
+/* Hide mobile watch page recommendations */
+html.no-feed ytm-watch ytm-compact-video-renderer,
+html.no-feed ytm-watch #items {
+  display: none !important;
+}
+
+/* -----------------------------
+   Hide YouTube Shorts on Mobile
+   ----------------------------- */
+
+/* 1) Block the entire Shorts page when directly accessed */
+html.no-feed ytm-reel-player-page-container,
+html.no-feed ytm-shorts,
+html.no-feed ytm-reel-player-overlay-renderer {
+  display: none !important;
+}
+
+/* 2) Hide Shorts links anywhere they appear */
+html.no-feed a[href*="/shorts/"],
+html.no-feed a[href*="/shorts/"] * {
+  display: none !important;
+}
+
+/* 3) Hide containers that have Shorts links */
+html.no-feed ytm-video-with-context-renderer:has(a[href*="/shorts/"]),
+html.no-feed ytm-compact-video-renderer:has(a[href*="/shorts/"]),
+html.no-feed ytm-rich-item-renderer:has(a[href*="/shorts/"]) {
+  display: none !important;
+}
+
+/* 4) Hide mobile Shorts shelf (horizontal scrolling shorts) */
+html.no-feed ytm-reel-shelf-renderer,
+html.no-feed ytm-reel-shelf-renderer * {
+  display: none !important;
+}
+
+/* 5) Hide individual reel items */
+html.no-feed ytm-reel-item-renderer {
+  display: none !important;
+}
+
+/* 6) Hide Shorts in mobile search results */
+html.no-feed ytm-search ytm-reel-shelf-renderer,
+html.no-feed ytm-search a[href*="/shorts/"] {
+  display: none !important;
+}
+
+/* 7) Hide the Shorts tab in mobile bottom navigation */
+html.no-feed ytm-pivot-bar-item-renderer[pivot-identifier="FEshorts"],
+html.no-feed ytm-pivot-bar-item-renderer[tab-identifier="FEshorts"],
+html.no-feed c3-tab-bar-item[tab-identifier="FEshorts"] {
+  display: none !important;
+}
+
+/* 8) Hide Shorts sections in any feed */
+html.no-feed ytm-item-section-renderer:has(ytm-reel-shelf-renderer) {
+  display: none !important;
+}
+
+/* 9) Additional fallback: hide by aria-label or title */
+html.no-feed [aria-label*="Shorts"],
+html.no-feed [title*="Shorts"] {
+  display: none !important;
+}
+
+/* 10) Hide the entire page content if we're on a /shorts/ URL */
+html.no-feed body:has([page-id="shorts"]) ytm-app,
+html.no-feed body:has([page-id="shorts"]) #player-container {
+  display: none !important;
 }

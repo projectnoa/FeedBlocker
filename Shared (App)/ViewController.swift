@@ -34,17 +34,6 @@ class ViewController: PlatformViewController {
     private func buildUI() {
         // DO NOTHING
     }
-    
-    private func reloadExtension() {
-        #if os(iOS)
-        SFContentBlockerManager.reloadContentBlocker(withIdentifier: extensionBundleIdentifier)
-        #elseif os(macOS)
-        SFSafariExtensionManager.getStateOfSafariExtension(withIdentifier: extensionBundleIdentifier) { state, error in
-            // Trigger a reload by dispatching to the extension
-            guard error == nil else { return }
-        }
-        #endif
-    }
 }
 
 struct SitePreferences {
