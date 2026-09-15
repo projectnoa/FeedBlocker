@@ -61,6 +61,7 @@ html.no-feed ytm-browse ytm-section-list-renderer[main-app-browsing_] #contents 
 
 /* Hide mobile home feed items */
 html.no-feed ytm-rich-item-renderer,
+html.no-feed ytm-rich-section-renderer,
 html.no-feed ytm-video-with-context-renderer {
   display: none !important;
 }

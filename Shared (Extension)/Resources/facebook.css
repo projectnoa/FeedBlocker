@@ -1,4 +1,75 @@
 /* content/facebook.css */
-html.no-feed div[role="main"] {
+
+/* AGGRESSIVE APPROACH: Hide everything and use visibility to debug */
+html.no-feed {
+  background: #1c1e21 !important; /* Dark background to show it's working */
+}
+
+/* Nuclear option - hide all main content */
+html.no-feed div[role="main"],
+html.no-feed div[role="main"] > *,
+html.no-feed div[role="main"] * {
   display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Desktop feed */
+html.no-feed div[role="feed"],
+html.no-feed div[role="feed"] * {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Primary content area (desktop) */
+html.no-feed div[data-pagelet="MainFeed"],
+html.no-feed div[data-pagelet*="Feed"],
+html.no-feed div[data-pagelet*="feed"] {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Stories */
+html.no-feed div[role="region"],
+html.no-feed div[aria-label*="Stories"],
+html.no-feed div[aria-label*="stories"] {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Reels */
+html.no-feed div[aria-label*="Reels"],
+html.no-feed div[aria-label*="reels"] {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Mobile-specific selectors */
+html.no-feed #MComposer,
+html.no-feed #m_newsfeed_stream,
+html.no-feed #m_group_stories_container,
+html.no-feed section[data-component-name="newsfeed"],
+html.no-feed div#contentArea {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Catch common React root IDs */
+html.no-feed #mount_0_0_x9 > div > div > div:nth-child(1) {
+  display: none !important;
+}
+
+/* Alternative: if role=main has a known child structure */
+html.no-feed div[role="main"] > div > div {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Mobile */
+html.no-feed div[class="m displayed"]
+{
+  display: none !important;
+  visibility: hidden !important;
 }
