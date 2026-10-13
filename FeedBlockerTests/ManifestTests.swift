@@ -16,6 +16,12 @@ struct ManifestTests {
             let css: [String]?
         }
 
+        struct Background: Decodable {
+            let scripts: [String]?
+            let persistent: Bool?
+        }
+
+        let background: Background?
         let content_scripts: [ContentScript]
         let host_permissions: [String]
     }
@@ -34,6 +40,15 @@ struct ManifestTests {
         #expect(!files.isEmpty)
         for file in files {
             #expect(FileManager.default.fileExists(atPath: resources.appending(path: file).path(percentEncoded: false)), "Missing \(file)")
+        }
+    }
+
+    /// App Store validation rejects iOS builds whose script-based background page isn't explicitly non-persistent.
+    @Test func backgroundScriptIsNonPersistent() throws {
+        let background = try #require(try loadManifest().background)
+
+        if background.scripts != nil {
+            #expect(background.persistent == false)
         }
     }
 
