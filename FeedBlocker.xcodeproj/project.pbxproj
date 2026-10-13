@@ -59,6 +59,7 @@
 		203CF0292F831613003A32E5 /* FeedBlocker Extension (iOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "FeedBlocker Extension (iOS).entitlements"; sourceTree = "<group>"; };
 		203CF02A2F831620003A32E5 /* FeedBlocker Extension (macOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "FeedBlocker Extension (macOS).entitlements"; sourceTree = "<group>"; };
 		20B967362F82FD79008A55CF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		20D99FD2307EB7690006148F /* FeedBlockerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeedBlockerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20F857592F1C8867006AC04F /* FeedBlocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedBlocker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20F8576B2F1C8867006AC04F /* FeedBlocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedBlocker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20F857762F1C8867006AC04F /* FeedBlocker Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "FeedBlocker Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,6 +67,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		20D99FE8307EBB310006148F /* Exceptions for "Shared (App)" folder in "FeedBlocker Extension (iOS)" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Sites.swift,
+			);
+			target = 20F857752F1C8867006AC04F /* FeedBlocker Extension (iOS) */;
+		};
+		20D99FE9307EBB310006148F /* Exceptions for "Shared (App)" folder in "FeedBlocker Extension (macOS)" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Sites.swift,
+			);
+			target = 20F8577F2F1C8867006AC04F /* FeedBlocker Extension (macOS) */;
+		};
 		20F857A42F1C8867006AC04F /* Exceptions for "Shared (App)" folder in "FeedBlocker (iOS)" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -116,7 +131,7 @@
 			membershipExceptions = (
 				Resources/_locales,
 				Resources/background.js,
-				Resources/content.js,
+				Resources/blocker.js,
 				Resources/facebook.css,
 				Resources/facebook.js,
 				Resources/images,
@@ -137,7 +152,7 @@
 			membershipExceptions = (
 				Resources/_locales,
 				Resources/background.js,
-				Resources/content.js,
+				Resources/blocker.js,
 				Resources/facebook.css,
 				Resources/facebook.js,
 				Resources/images,
@@ -156,11 +171,18 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		20D99FD3307EB7690006148F /* FeedBlockerTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = FeedBlockerTests;
+			sourceTree = "<group>";
+		};
 		20F857412F1C8865006AC04F /* Shared (App) */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				20F857A42F1C8867006AC04F /* Exceptions for "Shared (App)" folder in "FeedBlocker (iOS)" target */,
 				20F857AE2F1C8867006AC04F /* Exceptions for "Shared (App)" folder in "FeedBlocker (macOS)" target */,
+				20D99FE8307EBB310006148F /* Exceptions for "Shared (App)" folder in "FeedBlocker Extension (iOS)" target */,
+				20D99FE9307EBB310006148F /* Exceptions for "Shared (App)" folder in "FeedBlocker Extension (macOS)" target */,
 			);
 			path = "Shared (App)";
 			sourceTree = "<group>";
@@ -210,6 +232,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		20D99FCF307EB7690006148F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		20F857562F1C8867006AC04F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -254,6 +283,7 @@
 				20F8576C2F1C8867006AC04F /* macOS (App) */,
 				20F8577A2F1C8867006AC04F /* iOS (Extension) */,
 				20F857842F1C8867006AC04F /* macOS (Extension) */,
+				20D99FD3307EB7690006148F /* FeedBlockerTests */,
 				20F8575A2F1C8867006AC04F /* Products */,
 				20B967362F82FD79008A55CF /* README.md */,
 			);
@@ -266,6 +296,7 @@
 				20F8576B2F1C8867006AC04F /* FeedBlocker.app */,
 				20F857762F1C8867006AC04F /* FeedBlocker Extension.appex */,
 				20F857802F1C8867006AC04F /* FeedBlocker Extension.appex */,
+				20D99FD2307EB7690006148F /* FeedBlockerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -273,6 +304,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		20D99FD1307EB7690006148F /* FeedBlockerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 20D99FD8307EB7690006148F /* Build configuration list for PBXNativeTarget "FeedBlockerTests" */;
+			buildPhases = (
+				20D99FCE307EB7690006148F /* Sources */,
+				20D99FCF307EB7690006148F /* Frameworks */,
+				20D99FD0307EB7690006148F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				20D99FD3307EB7690006148F /* FeedBlockerTests */,
+			);
+			name = FeedBlockerTests;
+			packageProductDependencies = (
+			);
+			productName = FeedBlockerTests;
+			productReference = 20D99FD2307EB7690006148F /* FeedBlockerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		20F857582F1C8867006AC04F /* FeedBlocker (iOS) */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 20F857AA2F1C8867006AC04F /* Build configuration list for PBXNativeTarget "FeedBlocker (iOS)" */;
@@ -372,9 +425,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 2620;
+				LastSwiftUpdateCheck = 2700;
 				LastUpgradeCheck = 2640;
 				TargetAttributes = {
+					20D99FD1307EB7690006148F = {
+						CreatedOnToolsVersion = 27.0;
+					};
 					20F857582F1C8867006AC04F = {
 						CreatedOnToolsVersion = 26.2;
 					};
@@ -407,11 +463,19 @@
 				20F8576A2F1C8867006AC04F /* FeedBlocker (macOS) */,
 				20F857752F1C8867006AC04F /* FeedBlocker Extension (iOS) */,
 				20F8577F2F1C8867006AC04F /* FeedBlocker Extension (macOS) */,
+				20D99FD1307EB7690006148F /* FeedBlockerTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		20D99FD0307EB7690006148F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		20F857572F1C8867006AC04F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -443,6 +507,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		20D99FCE307EB7690006148F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		20F857552F1C8867006AC04F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -487,12 +558,58 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		20D99FD6307EB7690006148F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				MACOSX_DEPLOYMENT_TARGET = 27.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.buildthestack.FeedBlockerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 27.0;
+			};
+			name = Debug;
+		};
+		20D99FD7307EB7690006148F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				MACOSX_DEPLOYMENT_TARGET = 27.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.buildthestack.FeedBlockerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 27.0;
+			};
+			name = Release;
+		};
 		20F857A62F1C8867006AC04F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "FeedBlocker Extension (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = TL76QL278K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
@@ -527,7 +644,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "FeedBlocker Extension (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = TL76QL278K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
@@ -565,7 +682,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "FeedBlocker (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = TL76QL278K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS (App)/Info.plist";
@@ -608,7 +725,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "FeedBlocker (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = TL76QL278K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS (App)/Info.plist";
@@ -650,7 +767,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "FeedBlocker Extension (macOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = TL76QL278K;
 				ENABLE_APP_SANDBOX = YES;
@@ -689,7 +806,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "FeedBlocker Extension (macOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = TL76QL278K;
 				ENABLE_APP_SANDBOX = YES;
@@ -730,7 +847,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "FeedBlocker (macOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = TL76QL278K;
 				ENABLE_APP_SANDBOX = YES;
@@ -739,6 +856,7 @@
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = FeedBlocker;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -773,7 +891,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "FeedBlocker (macOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = TL76QL278K;
 				ENABLE_APP_SANDBOX = YES;
@@ -782,6 +900,7 @@
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = FeedBlocker;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -932,6 +1051,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		20D99FD8307EB7690006148F /* Build configuration list for PBXNativeTarget "FeedBlockerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20D99FD6307EB7690006148F /* Debug */,
+				20D99FD7307EB7690006148F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		20F857402F1C8865006AC04F /* Build configuration list for PBXProject "FeedBlocker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

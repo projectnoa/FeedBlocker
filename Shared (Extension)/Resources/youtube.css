@@ -1,5 +1,8 @@
 /* content/youtube.css */
 
+/* `html.no-feed` is only set on the home page.
+   `html.no-recs` is set on every page while YouTube blocking is enabled. */
+
 /* ===================================
    DESKTOP YOUTUBE (www.youtube.com)
    =================================== */
@@ -10,8 +13,14 @@ html.no-feed ytd-browse[page-subtype="home"] #contents {
   display: none !important;
 }
 
-/* (Optional) Hide watch-page sidebar recommendations */
-html.no-feed ytd-watch-flexy #secondary {
+/* Hide watch-page sidebar recommendations */
+html.no-recs ytd-watch-flexy #secondary {
+  display: none !important;
+}
+
+/* Hide the Shorts entry in the side navigation */
+html.no-recs ytd-guide-entry-renderer:has(a[title="Shorts"]),
+html.no-recs ytd-mini-guide-entry-renderer[aria-label="Shorts"] {
   display: none !important;
 }
 
@@ -20,31 +29,31 @@ html.no-feed ytd-watch-flexy #secondary {
    ----------------------------- */
 
 /* 1) Hide individual Shorts results (most reliable: href contains /shorts/) */
-html.no-feed ytd-search a[href*="/shorts/"],
-html.no-feed ytd-search a[href*="/shorts/"] * {
+html.no-recs ytd-search a[href*="/shorts/"],
+html.no-recs ytd-search a[href*="/shorts/"] * {
   display: none !important;
 }
 
 /* Sometimes the link is nested; hide the whole result container when it contains a /shorts/ link */
-html.no-feed ytd-search ytd-video-renderer:has(a[href*="/shorts/"]),
-html.no-feed ytd-search ytd-grid-video-renderer:has(a[href*="/shorts/"]),
-html.no-feed ytd-search ytd-compact-video-renderer:has(a[href*="/shorts/"]) {
+html.no-recs ytd-search ytd-video-renderer:has(a[href*="/shorts/"]),
+html.no-recs ytd-search ytd-grid-video-renderer:has(a[href*="/shorts/"]),
+html.no-recs ytd-search ytd-compact-video-renderer:has(a[href*="/shorts/"]) {
   display: none !important;
 }
 
 /* 2) Hide the Shorts shelf (a horizontal module of shorts) in search */
-html.no-feed ytd-search ytd-reel-shelf-renderer,
-html.no-feed ytd-search ytd-reel-shelf-renderer * {
+html.no-recs ytd-search ytd-reel-shelf-renderer,
+html.no-recs ytd-search ytd-reel-shelf-renderer * {
   display: none !important;
 }
 
 /* 3) Hide individual reel items if they appear */
-html.no-feed ytd-search ytd-reel-item-renderer {
+html.no-recs ytd-search ytd-reel-item-renderer {
   display: none !important;
 }
 
 /* 4) Clean up spacing where hidden items were (sometimes needed) */
-html.no-feed ytd-search ytd-item-section-renderer #contents {
+html.no-recs ytd-search ytd-item-section-renderer #contents {
   gap: 0 !important;
 }
 
@@ -67,8 +76,8 @@ html.no-feed ytm-video-with-context-renderer {
 }
 
 /* Hide mobile watch page recommendations */
-html.no-feed ytm-watch ytm-compact-video-renderer,
-html.no-feed ytm-watch #items {
+html.no-recs ytm-watch ytm-compact-video-renderer,
+html.no-recs ytm-watch #items {
   display: none !important;
 }
 
@@ -76,63 +85,64 @@ html.no-feed ytm-watch #items {
    Hide YouTube Shorts on Mobile
    ----------------------------- */
 
-/* 1) Block the entire Shorts page when directly accessed */
-html.no-feed ytm-reel-player-page-container,
-html.no-feed ytm-shorts,
-html.no-feed ytm-reel-player-overlay-renderer {
+/* 1) Block the entire Shorts page when directly accessed (before the redirect kicks in) */
+html.no-recs ytm-reel-player-page-container,
+html.no-recs ytm-shorts,
+html.no-recs ytm-reel-player-overlay-renderer {
   display: none !important;
 }
 
 /* 2) Hide Shorts links anywhere they appear */
-html.no-feed a[href*="/shorts/"],
-html.no-feed a[href*="/shorts/"] * {
+html.no-recs a[href*="/shorts/"],
+html.no-recs a[href*="/shorts/"] * {
   display: none !important;
 }
 
 /* 3) Hide containers that have Shorts links */
-html.no-feed ytm-video-with-context-renderer:has(a[href*="/shorts/"]),
-html.no-feed ytm-compact-video-renderer:has(a[href*="/shorts/"]),
-html.no-feed ytm-rich-item-renderer:has(a[href*="/shorts/"]) {
+html.no-recs ytm-video-with-context-renderer:has(a[href*="/shorts/"]),
+html.no-recs ytm-compact-video-renderer:has(a[href*="/shorts/"]),
+html.no-recs ytm-rich-item-renderer:has(a[href*="/shorts/"]) {
   display: none !important;
 }
 
 /* 4) Hide mobile Shorts shelf (horizontal scrolling shorts) */
-html.no-feed ytm-reel-shelf-renderer,
-html.no-feed ytm-reel-shelf-renderer * {
+html.no-recs ytm-reel-shelf-renderer,
+html.no-recs ytm-reel-shelf-renderer * {
   display: none !important;
 }
 
 /* 5) Hide individual reel items */
-html.no-feed ytm-reel-item-renderer {
+html.no-recs ytm-reel-item-renderer {
   display: none !important;
 }
 
 /* 6) Hide Shorts in mobile search results */
-html.no-feed ytm-search ytm-reel-shelf-renderer,
-html.no-feed ytm-search a[href*="/shorts/"] {
+html.no-recs ytm-search ytm-reel-shelf-renderer,
+html.no-recs ytm-search a[href*="/shorts/"] {
   display: none !important;
 }
 
 /* 7) Hide the Shorts tab in mobile bottom navigation */
-html.no-feed ytm-pivot-bar-item-renderer[pivot-identifier="FEshorts"],
-html.no-feed ytm-pivot-bar-item-renderer[tab-identifier="FEshorts"],
-html.no-feed c3-tab-bar-item[tab-identifier="FEshorts"] {
+html.no-recs ytm-pivot-bar-item-renderer[pivot-identifier="FEshorts"],
+html.no-recs ytm-pivot-bar-item-renderer[tab-identifier="FEshorts"],
+html.no-recs c3-tab-bar-item[tab-identifier="FEshorts"] {
   display: none !important;
 }
 
 /* 8) Hide Shorts sections in any feed */
-html.no-feed ytm-item-section-renderer:has(ytm-reel-shelf-renderer) {
+html.no-recs ytm-item-section-renderer:has(ytm-reel-shelf-renderer) {
   display: none !important;
 }
 
-/* 9) Additional fallback: hide by aria-label or title */
+/* 9) Additional fallback on the home page: hide by aria-label or title.
+      Kept home-only because it would also match regular videos with "Shorts" in the title. */
 html.no-feed [aria-label*="Shorts"],
 html.no-feed [title*="Shorts"] {
   display: none !important;
 }
 
 /* 10) Hide the entire page content if we're on a /shorts/ URL */
-html.no-feed body:has([page-id="shorts"]) ytm-app,
-html.no-feed body:has([page-id="shorts"]) #player-container {
+html.no-recs body:has([page-id="shorts"]) ytm-app,
+html.no-recs body:has([page-id="shorts"]) #player-container {
   display: none !important;
 }

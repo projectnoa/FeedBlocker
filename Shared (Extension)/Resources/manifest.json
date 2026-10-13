@@ -20,19 +20,19 @@
     "content_scripts": [
         {
           "matches": ["*://*.youtube.com/*"],
-          "js": ["youtube.js"],
+          "js": ["blocker.js", "youtube.js"],
           "css": ["youtube.css"],
           "run_at": "document_start"
         },
         {
           "matches": ["*://*.instagram.com/*"],
-          "js": ["instagram.js"],
+          "js": ["blocker.js", "instagram.js"],
           "css": ["instagram.css"],
           "run_at": "document_start"
         },
         {
           "matches": ["*://*.facebook.com/*"],
-          "js": ["facebook.js"],
+          "js": ["blocker.js", "facebook.js"],
           "css": ["facebook.css"],
           "run_at": "document_start"
         }
@@ -50,7 +50,6 @@
     ],
 
     "permissions": [
-        "storage",
-        "activeTab"
+        "storage"
     ]
 }

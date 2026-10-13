@@ -21,29 +21,4 @@ typealias PlatformStackView = NSStackView
 let extensionBundleIdentifier = "com.buildthestack.FeedBlocker.Extension"
 
 class ViewController: PlatformViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        buildUI()
-    }
-    
-    deinit {
-        
-    }
-
-    private func buildUI() {
-        // DO NOTHING
-    }
-}
-
-struct SitePreferences {
-    static let defaults = UserDefaults(suiteName: "group.com.buildthestack.feedblocker.prefs")!
-
-    static func isEnabled(_ site: Site) -> Bool {
-        defaults.object(forKey: site.storageKey) as? Bool ?? true
-    }
-
-    static func setEnabled(_ site: Site, enabled: Bool) {
-        defaults.set(enabled, forKey: site.storageKey)
-    }
 }

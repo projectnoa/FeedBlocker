@@ -1,16 +1,14 @@
-console.log("Feed blocker starts!", browser);
+const SITES = ["facebook", "instagram", "youtube"];
+const keyFor = (site) => `enabled_${site}`;
 
-// Initialize popup state
+// Initialize popup state (every site defaults to enabled)
 async function initializePopup() {
-    // First, sync from native to ensure we have the latest preferences
-    const prefs = await browser.runtime.sendMessage({ name: "getPreferences" });
-    
-    // Then set all toggles based on the synced preferences
-    for (const site of ["facebook", "instagram", "youtube"]) {
+    const defaults = Object.fromEntries(SITES.map((site) => [keyFor(site), true]));
+    const prefs = await browser.storage.local.get(defaults);
+
+    for (const site of SITES) {
         const toggle = document.getElementById(site);
-        if (toggle) {
-            toggle.checked = prefs?.[`enabled_${site}`] ?? true;
-        }
+        if (toggle) toggle.checked = prefs[keyFor(site)] !== false;
     }
 }
 
@@ -18,24 +16,19 @@ async function initializePopup() {
 initializePopup();
 
 // Keep toggles updated if storage changes while popup is open
-browser.storage.onChanged.addListener((changes) => {
-    for (const [key, { newValue }] of Object.entries(changes)) {
-        if (!key.startsWith("enabled_")) continue;
-        const site = key.replace("enabled_", "");
+browser.storage.onChanged.addListener((changes, area) => {
+    if (area !== "local") return;
+
+    for (const site of SITES) {
+        const change = changes[keyFor(site)];
         const toggle = document.getElementById(site);
-        if (toggle) toggle.checked = newValue;
+        if (change && toggle) toggle.checked = change.newValue !== false;
     }
 });
 
-// Write changes back through the background script
-for (const site of ["facebook", "instagram", "youtube"]) {
-    const toggle = document.getElementById(site);
-    
-    toggle?.addEventListener("change", (e) => {
-        browser.runtime.sendMessage({
-            name: "setPreference",
-            site,
-            enabled: e.target.checked
-        });
+// Write changes to storage; content scripts react via storage.onChanged
+for (const site of SITES) {
+    document.getElementById(site)?.addEventListener("change", (e) => {
+        browser.storage.local.set({ [keyFor(site)]: e.target.checked });
     });
 }
